@@ -5,9 +5,9 @@ using RestSharp;
 string endereco = "https://pokeapi.co/api/v2/pokemon";
 
 PokemonRequestRestSharp();
-await PokemonRequestJsonSerializer();
+PokemonRequestJsonSerializer();
 
-async Task PokemonRequestJsonSerializer()
+void PokemonRequestJsonSerializer()
 {
     using(HttpClient client = new HttpClient())
     {

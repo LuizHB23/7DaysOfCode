@@ -1,13 +1,15 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using RestSharp;
 
 string endereco = "https://pokeapi.co/api/v2/pokemon";
 
 PokemonRequestRestSharp();
-PokemonRequestJsonSerializer();
+PokemonRequestNomeRestSharp("pikachu");
+await PokemonRequestJsonSerializer();
 
-void PokemonRequestJsonSerializer()
+async Task PokemonRequestJsonSerializer()
 {
     using(HttpClient client = new HttpClient())
     {
@@ -32,6 +34,19 @@ void PokemonRequestRestSharp()
     Console.ReadKey();
 }
 
+void PokemonRequestNomeRestSharp(string nome)
+{
+    var client = new RestClient(endereco + $"/{nome}");
+    var request = new RestRequest("", Method.Get);
+    var response = client.Execute(request);
+
+    if(response.StatusCode == System.Net.HttpStatusCode.OK)
+        Console.WriteLine(response.Content);
+    else
+        Console.WriteLine(response.ErrorMessage);
+    
+    Console.ReadKey();
+}
 public class Resposta
 {
     [JsonPropertyName("count")]

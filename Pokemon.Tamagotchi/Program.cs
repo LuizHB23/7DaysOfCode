@@ -1,24 +1,14 @@
 ﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using RestSharp;
+using Pokemon.Tamagotchi.Response;
+using Pokemon.Tamagotchi.Models;
 
 string endereco = "https://pokeapi.co/api/v2/pokemon";
 
 PokemonRequestRestSharp();
 PokemonRequestNomeRestSharp("pikachu");
 await PokemonRequestJsonSerializer();
-
-async Task PokemonRequestJsonSerializer()
-{
-    using(HttpClient client = new HttpClient())
-    {
-        var response = await client.GetStringAsync(endereco);
-        var deserializer = JsonSerializer.Deserialize<Resposta>(response);
-
-        deserializer!.ExibeResultado();
-    }
-}
+await MascoteRequestJsonSerializer("pikachu");
 
 void PokemonRequestRestSharp()
 {
@@ -47,45 +37,27 @@ void PokemonRequestNomeRestSharp(string nome)
     
     Console.ReadKey();
 }
-public class Resposta
+
+async Task PokemonRequestJsonSerializer()
 {
-    [JsonPropertyName("count")]
-    public int Count { get; set;}
-
-    [JsonPropertyName("next")]
-    public string? Next { get; set; }
-
-    [JsonPropertyName("previous")]
-    public string? Previous { get; set; }
-
-    [JsonPropertyName("results")]
-    public virtual ICollection<Pokemon>? Pokemons { get; set;}
-
-    public void ExibeResultado()
+    using(HttpClient client = new HttpClient())
     {
-        System.Console.WriteLine($"Count: {Count}");
-        System.Console.WriteLine($"Next: {Next}");
-        System.Console.WriteLine($"Previous: {Previous}");
+        var response = await client.GetStringAsync(endereco);
+        var deserializer = JsonSerializer.Deserialize<Resposta>(response);
 
-        foreach(var pokemon in Pokemons!)
-        {
-            System.Console.WriteLine($"Results:");
-            pokemon.ExibirPokemons();
-        }
+        deserializer!.ExibeResultado();
     }
 }
-public class Pokemon
+
+async Task MascoteRequestJsonSerializer(string nome)
 {
-    [JsonPropertyName("name")]
-    public string? Name { get; set; }
-
-    [JsonPropertyName("url")]
-    public string? Url { get; set; }
-
-    public void ExibirPokemons()
+    using(HttpClient client = new HttpClient())
     {
-        System.Console.WriteLine($"Name: {Name}");
-        System.Console.WriteLine($"Url: {Url}");
-    }
+        var response = await client.GetStringAsync(endereco + $"/{nome}");
+        var deserializer = JsonSerializer.Deserialize<Mascote>(response);
 
+        Console.WriteLine(deserializer);
+        deserializer.VerHabilidades();
+        deserializer.VerMovimentos();
+    }
 }

@@ -1,3 +1,5 @@
+using Pokemon.Tamagotchi.RequestResponse;
+
 namespace Pokemon.Tamagotchi.Menus;
 
 internal class MenuMascotesAdotados : Menu
@@ -12,7 +14,7 @@ internal class MenuMascotesAdotados : Menu
         }
     }
     
-    public MenuMascotesAdotados(string nome) : base(nome)
+    public MenuMascotesAdotados(string nome, Request request) : base(nome, request)
     {
 
     }

@@ -1,8 +1,11 @@
 using System.Text.Json.Serialization;
+using Pokemon.Tamagotchi.RequestResponse;
 
 namespace Pokemon.Tamagotchi.Models;
 internal class PokemonClass
 {
+    Mascote pokemon = new Mascote();
+
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 

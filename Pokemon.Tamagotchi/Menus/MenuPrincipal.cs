@@ -1,3 +1,5 @@
+using Pokemon.Tamagotchi.RequestResponse;
+
 namespace Pokemon.Tamagotchi.Menus;
 
 internal class MenuPrincipal : Menu
@@ -12,12 +14,13 @@ internal class MenuPrincipal : Menu
         }
     }
 
-    public MenuPrincipal(string nome) : base(nome) {}
+    public MenuPrincipal(string nome, Request request) : base(nome, request) {}
 
     public override int ExibirMenu()
     {
         LimpaConsole();
-        MostrarTitulo();
+        MostrarLogo();
+        EscreveTitulo(titulo);
         Console.WriteLine($"{nomePessoa} escolha o que quer fazer");
         Console.WriteLine(
             "1 - Adotar um mascote\n" +
@@ -45,10 +48,10 @@ internal class MenuPrincipal : Menu
         switch (numero)
         {
             case 1:
-                return new MenuAdocao(nomePessoa);
+                return new MenuAdocao(nomePessoa, request);
             
             case 2:
-                return new MenuMascotesAdotados(nomePessoa);
+                return new MenuMascotesAdotados(nomePessoa, request);
 
             default:
                 Console.WriteLine("Até logo :)");

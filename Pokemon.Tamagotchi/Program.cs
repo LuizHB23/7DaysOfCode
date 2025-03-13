@@ -6,7 +6,7 @@ string endereco = "https://pokeapi.co/api/v2/pokemon";
 
 Request request = new Request(endereco);
 
-Menu.MostrarTitulo();
+Menu.MostrarLogo();
 
 Console.WriteLine("\nQual o seu nome?");
 string nome = "";
@@ -20,14 +20,14 @@ while(nome.Equals(""))
     }
 }
 
-MenuPrincipal menu = new MenuPrincipal(nome);
+MenuPrincipal menu = new MenuPrincipal(nome, request);
 int numero = menu.ExibirMenu();
 
 Menu novoMenu = menu.RetornaMenu(numero);
 
 while(novoMenu is not null)
 {
-    novoMenu.ExibirMenu();
+    numero = novoMenu.ExibirMenu();
     novoMenu = novoMenu.RetornaMenu(numero);
 }
 

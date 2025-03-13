@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IeNxM1koGwY=",
+  "dgSpecHash": "hsaU6m5zppg=",
   "success": true,
-  "projectFilePath": "F:\\GitHub\\C#\\7DaysOfCode\\Pokemon.Tamagotchi\\Pokemon.Tamagotchi.csproj",
+  "projectFilePath": "C:\\GitHub\\C#\\7DaysOfCode\\Pokemon.Tamagotchi\\Pokemon.Tamagotchi.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\luizh\\.nuget\\packages\\restsharp\\112.1.0\\restsharp.112.1.0.nupkg.sha512"
+    "C:\\Users\\lb\\.nuget\\packages\\restsharp\\112.1.0\\restsharp.112.1.0.nupkg.sha512"
   ],
   "logs": []
 }

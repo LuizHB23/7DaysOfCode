@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 
-namespace Pokemon.Tamagotchi.Response;
-internal class Pokemon
+namespace Pokemon.Tamagotchi.Models;
+internal class PokemonClass
 {
     [JsonPropertyName("name")]
     public string? Name { get; set; }

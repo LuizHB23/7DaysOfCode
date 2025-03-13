@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using Pokemon.Tamagotchi.Models;
 
-namespace Pokemon.Tamagotchi.Response;
+namespace Pokemon.Tamagotchi.RequestResponse;
 
 internal class Resposta
 {
@@ -15,7 +15,7 @@ internal class Resposta
     public string? Previous { get; set; }
 
     [JsonPropertyName("results")]
-    public virtual ICollection<Pokemon>? Pokemons { get; set;}
+    public virtual ICollection<PokemonClass>? Pokemons { get; set;}
 
     public void ExibeResultado()
     {

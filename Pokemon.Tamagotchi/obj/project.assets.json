@@ -50,19 +50,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\luizh\\.nuget\\packages\\": {}
+    "C:\\Users\\lb\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\GitHub\\C#\\7DaysOfCode\\Pokemon.Tamagotchi\\Pokemon.Tamagotchi.csproj",
+      "projectUniqueName": "C:\\GitHub\\C#\\7DaysOfCode\\Pokemon.Tamagotchi\\Pokemon.Tamagotchi.csproj",
       "projectName": "Pokemon.Tamagotchi",
-      "projectPath": "F:\\GitHub\\C#\\7DaysOfCode\\Pokemon.Tamagotchi\\Pokemon.Tamagotchi.csproj",
-      "packagesPath": "C:\\Users\\luizh\\.nuget\\packages\\",
-      "outputPath": "F:\\GitHub\\C#\\7DaysOfCode\\Pokemon.Tamagotchi\\obj\\",
+      "projectPath": "C:\\GitHub\\C#\\7DaysOfCode\\Pokemon.Tamagotchi\\Pokemon.Tamagotchi.csproj",
+      "packagesPath": "C:\\Users\\lb\\.nuget\\packages\\",
+      "outputPath": "C:\\GitHub\\C#\\7DaysOfCode\\Pokemon.Tamagotchi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\luizh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\lb\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"

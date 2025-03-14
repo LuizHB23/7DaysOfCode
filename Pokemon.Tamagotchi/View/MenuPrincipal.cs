@@ -1,6 +1,6 @@
-using Pokemon.Tamagotchi.RequestResponse;
+using Pokemon.Tamagotchi.Controller.RequestResponse;
 
-namespace Pokemon.Tamagotchi.Menus;
+namespace Pokemon.Tamagotchi.View;
 
 internal class MenuPrincipal : Menu
 {
@@ -18,8 +18,6 @@ internal class MenuPrincipal : Menu
 
     public override int ExibirMenu()
     {
-        LimpaConsole();
-        MostrarLogo();
         EscreveTitulo(titulo);
         Console.WriteLine($"{nomePessoa} escolha o que quer fazer");
         Console.WriteLine(

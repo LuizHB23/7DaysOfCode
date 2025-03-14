@@ -13,8 +13,7 @@ internal class Habilidades
     public void ExibirHabilidade()
     {
         System.Console.WriteLine("--------------------");
-        System.Console.WriteLine($"Nome: {Nome} \n");
-        System.Console.WriteLine($"Url: {Url}");
-        System.Console.WriteLine("--------------------");
+        System.Console.WriteLine($"Nome: {Nome}");
+        System.Console.WriteLine("--------------------\n");
     }
 }

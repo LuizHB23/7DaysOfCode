@@ -1,7 +1,6 @@
-using System.Threading.Tasks;
-using Pokemon.Tamagotchi.RequestResponse;
+using Pokemon.Tamagotchi.Controller.RequestResponse;
 
-namespace Pokemon.Tamagotchi.Menus;
+namespace Pokemon.Tamagotchi.View;
 
 internal class MenuAdocao : Menu
 {
@@ -21,28 +20,21 @@ internal class MenuAdocao : Menu
 
     public override int ExibirMenu()
     {
-        LimpaConsole();
-        MostrarLogo();
         EscreveTitulo(titulo);
         Console.WriteLine($"{nomePessoa} escolha seu mascote");
         ExibirMascotesAsync().Wait();
+        Console.WriteLine();
         int id = Convert.ToInt32(Console.ReadLine());
         ExibirMenuParaSaberMaisAsync(id).Wait();
-        return 3;
+        return 0;
     }
-
 
     public async Task ExibirMascotesAsync() => await request.MascotePokemonRequestJsonSerializerAsync();
 
-    public override Menu RetornaMenu(int numero)
-    {
-        return new MenuPrincipal(nomePessoa, request);
-    }
+    public override Menu RetornaMenu(int numero) => new MenuPrincipal(nomePessoa, request);
 
     private async Task ExibirMenuParaSaberMaisAsync(int id)
     {
-        LimpaConsole();
-        MostrarLogo();
         EscreveTitulo("Para Saber Mais");
         Console.WriteLine($"{nomePessoa} quer conhecer mais?");
         string pokemonNome = await request.PokemonRequestNomeJsonSerializerAsync(id);

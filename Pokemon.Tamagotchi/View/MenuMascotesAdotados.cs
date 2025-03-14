@@ -1,6 +1,6 @@
-using Pokemon.Tamagotchi.RequestResponse;
+using Pokemon.Tamagotchi.Controller.RequestResponse;
 
-namespace Pokemon.Tamagotchi.Menus;
+namespace Pokemon.Tamagotchi.View;
 
 internal class MenuMascotesAdotados : Menu
 {

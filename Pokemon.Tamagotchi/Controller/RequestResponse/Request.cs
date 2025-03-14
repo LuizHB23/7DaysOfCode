@@ -1,8 +1,9 @@
 using Pokemon.Tamagotchi.Models;
 using System.Text.Json;
 using RestSharp;
+using System.Text;
 
-namespace Pokemon.Tamagotchi.RequestResponse;
+namespace Pokemon.Tamagotchi.Controller.RequestResponse;
 
 internal class Request
 {
@@ -90,30 +91,31 @@ internal class Request
             var deserializer = JsonSerializer.Deserialize<Mascote>(response);
 
             Console.WriteLine(deserializer);
+            Console.WriteLine("Habilidades:\n");
             deserializer.VerHabilidades();
-            deserializer.VerMovimentos();
         }
     }
 
-    /* 
-            FAZENDO PEGAR TODOS OS POKEMONS
+    /*          Chama todos os Pokemos de forma desorganizada
 
-     public async Task MascotePokemonRequestJsonSerializerAsync()
+    public async Task MemeMascotePokemonRequestJsonSerializerAsync(int indice)
     {
         using(HttpClient client = new HttpClient())
         {
-            for(int i = 0; i <= 1300; i += 20)
-            {
-                var response = await client.GetStringAsync(endereco + $"?offset={i}&limit=20");
-                var deserializer = JsonSerializer.Deserialize<Resposta>(response);
-                
-                foreach(var pokemon in deserializer.Pokemons)
-                {
-                    var responsePokemon = await client.GetStringAsync(endereco + $"/{pokemon.Name}");
-                    var deserializerPokemon = JsonSerializer.Deserialize<Mascote>(responsePokemon);
+            var response = await client.GetStringAsync(endereco + $"?offset={indice}&limit=20");
+            var deserializer = JsonSerializer.Deserialize<Resposta>(response);
 
-                    Console.WriteLine($"Id: {deserializerPokemon.Id} - Nome: {deserializerPokemon.Nome}");
-                }
+             if(indice < 1300)
+            {
+                indice += 20;
+                Task task = MemeMascotePokemonRequestJsonSerializerAsync(indice);
+            }
+            
+            foreach(var pokemon in deserializer.Pokemons)
+            {
+                var responsePokemon = await client.GetStringAsync(endereco + $"/{pokemon.Name}");
+                var deserializerPokemon = JsonSerializer.Deserialize<Mascote>(responsePokemon);
+                Console.WriteLine($"Id: {deserializerPokemon.Id} - Nome: {deserializerPokemon.Nome}");
             }
         }
     }*/

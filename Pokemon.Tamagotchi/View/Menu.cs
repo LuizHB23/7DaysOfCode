@@ -1,6 +1,6 @@
-using Pokemon.Tamagotchi.RequestResponse;
+using Pokemon.Tamagotchi.Controller.RequestResponse;
 
-namespace Pokemon.Tamagotchi.Menus;
+namespace Pokemon.Tamagotchi.View;
 
 internal abstract class Menu
 {
@@ -17,6 +17,8 @@ internal abstract class Menu
     public abstract Menu RetornaMenu(int numero);
     protected void EscreveTitulo(string titulo)
     {
+        LimpaConsole();
+        MostrarLogo();
         string empty = String.Empty;
         Console.WriteLine(empty.PadLeft(titulo.Count(), '-'));
         Console.WriteLine(titulo);
@@ -35,5 +37,7 @@ internal abstract class Menu
             ▀▀█▀▀ █▀▀█ █▀▄▀█ █▀▀█ █▀▀▀ █▀▀█ ▀▀█▀▀ █▀▀ █░░█ ░▀░ 
             ░▒█░░ █▄▄█ █░▀░█ █▄▄█ █░▀█ █░░█ ░░█░░ █░░ █▀▀█ ▀█▀ 
             ░▒█░░ ▀░░▀ ▀░░░▀ ▀░░▀ ▀▀▀▀ ▀▀▀▀ ░░▀░░ ▀▀▀ ▀░░▀ ▀▀▀");
+
+        Console.WriteLine();
     }
 }

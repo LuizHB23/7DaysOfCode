@@ -19,9 +19,6 @@ internal class Mascote
     [JsonPropertyName("abilities")]
     public List<ClasseHabilidades>? ClasseHabilidades { get; set; }
 
-    [JsonPropertyName("moves")]
-    public List<ClasseMovimentos>? ClasseMovimentos { get; set; }
-
     public override string ToString()
     {
         return $"Id: {Id} \nNome: {Nome} \nAltura: {Altura} \nPeso: {Peso}";
@@ -32,14 +29,6 @@ internal class Mascote
         foreach(var habilidade in ClasseHabilidades)
         {
             habilidade.Habilidade.ExibirHabilidade();
-        }
-    }
-
-    public void VerMovimentos()
-    {
-        foreach(var movimento in ClasseMovimentos)
-        {
-            movimento.Movimento.ExibirMovimento();
         }
     }
 }

@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using Pokemon.Tamagotchi.RequestResponse;
 
 namespace Pokemon.Tamagotchi.Models;
 internal class PokemonClass

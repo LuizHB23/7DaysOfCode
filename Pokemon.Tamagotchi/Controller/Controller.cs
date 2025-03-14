@@ -26,15 +26,13 @@ internal class Controller
             }
         }
 
-        MenuPrincipal menu = new MenuPrincipal(nome, request);
-        int numero = menu.ExibirMenu();
+        Menu menu = new MenuPrincipal(nome, request);
+        int numero;
 
-        Menu novoMenu = menu.RetornaMenu(numero);
-
-        while(novoMenu is not null)
+        while(menu is not null)
         {
-            numero = novoMenu.ExibirMenu();
-            novoMenu = novoMenu.RetornaMenu(numero);
+            numero = menu.ExibirMenu();
+            menu = menu.RetornaMenu(numero);
         }
 
         /*request.PokemonRequestRestSharp();

@@ -1,32 +1,27 @@
-using System.Text.Json.Serialization;
-
 namespace Pokemon.Tamagotchi.Models;
 
 internal class Mascote
 {
-    [JsonPropertyName("id")]
-    public int Id { get; set; }
-
-    [JsonPropertyName("name")]
-    public string? Nome { get; set; }
-
-    [JsonPropertyName("height")]
-    public int Altura { get; set; }
-
-    [JsonPropertyName("weight")]
+    public string? Nome { get; }
+    public int Altura { get; }
     public int Peso { get; set; }
-
-    [JsonPropertyName("abilities")]
     public List<ClasseHabilidades>? ClasseHabilidades { get; set; }
+    public EstadoMascote EstadoMascote { get; set; }
 
-    public override string ToString()
+    public Mascote(string nome, int altura, int peso, List<ClasseHabilidades> classeHabilidades)
     {
-        return $"Id: {Id} \nNome: {Nome} \nAltura: {Altura} \nPeso: {Peso}";
+        Nome = nome;
+        Altura = altura;
+        Peso = peso;
+        ClasseHabilidades = classeHabilidades;
+        EstadoMascote = new EstadoMascote();
     }
+
+    public string RetornaNomeMascote() => Nome!;
 
     public void VerHabilidades()
     {
-        foreach(var habilidade in ClasseHabilidades)
+        foreach(var habilidade in ClasseHabilidades!)
         {
             habilidade.Habilidade.ExibirHabilidade();
         }

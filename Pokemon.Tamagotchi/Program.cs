@@ -1,6 +1,6 @@
 ﻿using Pokemon.Tamagotchi.Controller;
 
-Controller controller = new Controller();
+ControllerMenu controller = new ControllerMenu();
 
 controller.Jogar();
 

@@ -1,4 +1,5 @@
-using Pokemon.Tamagotchi.Controller.RequestResponse;
+using Pokemon.Tamagotchi.Models;
+using Pokemon.Tamagotchi.RequestResponse;
 
 namespace Pokemon.Tamagotchi.View;
 
@@ -14,7 +15,7 @@ internal class MenuAdocao : Menu
         }
     }
     
-    public MenuAdocao(string nome, Request request) : base(nome, request)
+    public MenuAdocao(Player player, Request request) : base(player, request)
     {
     }
 
@@ -31,7 +32,7 @@ internal class MenuAdocao : Menu
 
     public async Task ExibirMascotesAsync() => await request.MascotePokemonRequestJsonSerializerAsync();
 
-    public override Menu RetornaMenu(int numero) => new MenuPrincipal(nomePessoa, request);
+    public override Menu RetornaMenu(int numero) => new MenuPrincipal(player, request);
 
     private async Task ExibirMenuParaSaberMaisAsync(int id)
     {
@@ -61,12 +62,21 @@ internal class MenuAdocao : Menu
         switch(numero)
         {
             case 1:
-                request.MascoteRequestJsonSerializer(pokemonNome).Wait();
+                request.MascoteRequestJsonSerializerAsync(pokemonNome).Wait();
                 Console.ReadKey();
                 await ExibirMenuParaSaberMaisAsync(id);
                 break;
             case 2:
-                Console.WriteLine("Mascote adotado com sucesso!");
+                if(player.Mascotes.RetornaMascoteListaPorNome(pokemonNome) is null)
+                {
+                    Mascote mascote = await request.MascoteRequestAsync(pokemonNome);
+                    player.Mascotes.AdicionarMascote(mascote);
+                    Console.WriteLine("Mascote adotado com sucesso!");
+                }
+                else
+                {
+                    Console.WriteLine("Mascote não disponível para adoção");
+                }
                 Console.ReadKey();
                 break;
             default:

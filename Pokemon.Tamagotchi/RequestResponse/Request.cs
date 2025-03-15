@@ -1,9 +1,8 @@
 using Pokemon.Tamagotchi.Models;
 using System.Text.Json;
 using RestSharp;
-using System.Text;
 
-namespace Pokemon.Tamagotchi.Controller.RequestResponse;
+namespace Pokemon.Tamagotchi.RequestResponse;
 
 internal class Request
 {
@@ -64,7 +63,7 @@ internal class Request
             foreach(var pokemon in deserializer.Pokemons)
             {
                 var responsePokemon = await client.GetStringAsync(endereco + $"/{pokemon.Name}");
-                var deserializerPokemon = JsonSerializer.Deserialize<Mascote>(responsePokemon);
+                var deserializerPokemon = JsonSerializer.Deserialize<MascoteRequest>(responsePokemon);
 
                 Console.WriteLine($"Id: {deserializerPokemon.Id} - Nome: {deserializerPokemon.Nome}");
             }
@@ -77,22 +76,38 @@ internal class Request
         using(HttpClient client = new HttpClient())
         {
             var response = await client.GetStringAsync(endereco + $"/{id}");
-            var deserializer = JsonSerializer.Deserialize<Mascote>(response);
+            var deserializer = JsonSerializer.Deserialize<MascoteRequest>(response);
 
             return deserializer.Nome;
         }
     }
 
-    public async Task MascoteRequestJsonSerializer(string nome)
+    public async Task MascoteRequestJsonSerializerAsync(string nome)
     {
         using(HttpClient client = new HttpClient())
         {
             var response = await client.GetStringAsync(endereco + $"/{nome}");
-            var deserializer = JsonSerializer.Deserialize<Mascote>(response);
+            var deserializer = JsonSerializer.Deserialize<MascoteRequest>(response);
 
             Console.WriteLine(deserializer);
             Console.WriteLine("Habilidades:\n");
             deserializer.VerHabilidades();
+        }
+    }
+
+    public async Task<Mascote> MascoteRequestAsync(string nome)
+    {
+        using(HttpClient client = new HttpClient())
+        {
+            var response = await client.GetStringAsync(endereco + $"/{nome}");
+            var deserializer = JsonSerializer.Deserialize<MascoteRequest>(response);
+
+            string nomeMascote = deserializer!.Nome!;
+            int alturaMascote = deserializer.Altura;
+            int pesoMascote = deserializer.Peso;
+            List<ClasseHabilidades>? classeHabilidadesMascote = deserializer.ClasseHabilidades;
+
+            return new Mascote(nomeMascote, alturaMascote, pesoMascote, classeHabilidadesMascote!);
         }
     }
 

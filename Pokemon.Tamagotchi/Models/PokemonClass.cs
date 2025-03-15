@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace Pokemon.Tamagotchi.Models;
 internal class PokemonClass
 {
-    Mascote pokemon = new Mascote();
+    MascoteRequest pokemon = new MascoteRequest();
 
     [JsonPropertyName("name")]
     public string? Name { get; set; }

@@ -1,15 +1,18 @@
-using Pokemon.Tamagotchi.Controller.RequestResponse;
+using Pokemon.Tamagotchi.RequestResponse;
+using Pokemon.Tamagotchi.Models;
 
 namespace Pokemon.Tamagotchi.View;
 
 internal abstract class Menu
 {
+    protected readonly Player player;
     protected readonly string nomePessoa;
     protected readonly Request request;
 
-    public Menu(string nome, Request request)
+    public Menu(Player player, Request request)
     {
-        nomePessoa = nome;
+        this.player = player;
+        nomePessoa = player.Nome;
         this.request = request;
     }
 

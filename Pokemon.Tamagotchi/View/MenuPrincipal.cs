@@ -1,4 +1,5 @@
-using Pokemon.Tamagotchi.Controller.RequestResponse;
+using Pokemon.Tamagotchi.RequestResponse;
+using Pokemon.Tamagotchi.Models;
 
 namespace Pokemon.Tamagotchi.View;
 
@@ -14,7 +15,7 @@ internal class MenuPrincipal : Menu
         }
     }
 
-    public MenuPrincipal(string nome, Request request) : base(nome, request) {}
+    public MenuPrincipal(Player player, Request request) : base(player, request) {}
 
     public override int ExibirMenu()
     {
@@ -26,17 +27,24 @@ internal class MenuPrincipal : Menu
             "3 - Sair");
         int numero = 0;
 
-        while(numero < 1 || numero > 3)
+        do
         {
             try
             {
                 numero = Convert.ToInt32(Console.ReadLine());
+
+                if(numero == 2 && !player.Mascotes.VerificaMascotes())
+                {
+                    numero = 0;
+                }
             }
             catch(FormatException ex)
             {
                 Console.WriteLine("Isso não é um número: " + ex.Message);
             }
-        }
+
+        }while(numero < 1 || numero > 3);
+        
 
         return numero;
     }
@@ -46,10 +54,10 @@ internal class MenuPrincipal : Menu
         switch (numero)
         {
             case 1:
-                return new MenuAdocao(nomePessoa, request);
+                return new MenuAdocao(player, request);
             
             case 2:
-                return new MenuMascotesAdotados(nomePessoa, request);
+                return new MenuMascotesAdotados(player, request);
 
             default:
                 Console.WriteLine("Até logo :)");

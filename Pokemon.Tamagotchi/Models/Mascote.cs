@@ -19,6 +19,11 @@ internal class Mascote
 
     public string RetornaNomeMascote() => Nome!;
 
+    public override string ToString()
+    {
+        return $"Nome: {Nome} \nAltura: {Altura} \nPeso: {Peso}";
+    }
+
     public void VerHabilidades()
     {
         foreach(var habilidade in ClasseHabilidades!)

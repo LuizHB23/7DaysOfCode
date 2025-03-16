@@ -1,6 +1,7 @@
 using Pokemon.Tamagotchi.Models;
 using System.Text.Json;
 using RestSharp;
+using AutoMapper;
 
 namespace Pokemon.Tamagotchi.RequestResponse;
 
@@ -67,7 +68,6 @@ internal class Request
 
                 Console.WriteLine($"Id: {deserializerPokemon.Id} - Nome: {deserializerPokemon.Nome}");
             }
-        
         }
     }
 
@@ -101,13 +101,11 @@ internal class Request
         {
             var response = await client.GetStringAsync(endereco + $"/{nome}");
             var deserializer = JsonSerializer.Deserialize<MascoteRequest>(response);
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<MascoteRequest, Mascote>());
+            var mapping = config.CreateMapper();
+            Mascote mascote = mapping.Map<Mascote>(deserializer);
 
-            string nomeMascote = deserializer!.Nome!;
-            int alturaMascote = deserializer.Altura;
-            int pesoMascote = deserializer.Peso;
-            List<ClasseHabilidades>? classeHabilidadesMascote = deserializer.ClasseHabilidades;
-
-            return new Mascote(nomeMascote, alturaMascote, pesoMascote, classeHabilidadesMascote!);
+            return mascote;
         }
     }
 

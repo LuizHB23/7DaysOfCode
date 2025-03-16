@@ -34,3 +34,7 @@ F:\GitHub\C#\7DaysOfCode\Pokemon.Tamagotchi\obj\Debug\net9.0\refint\Pokemon.Tama
 F:\GitHub\C#\7DaysOfCode\Pokemon.Tamagotchi\obj\Debug\net9.0\Pokemon.Tamagotchi.pdb
 F:\GitHub\C#\7DaysOfCode\Pokemon.Tamagotchi\obj\Debug\net9.0\Pokemon.Tamagotchi.genruntimeconfig.cache
 F:\GitHub\C#\7DaysOfCode\Pokemon.Tamagotchi\obj\Debug\net9.0\ref\Pokemon.Tamagotchi.dll
+F:\GitHub\C#\7DaysOfCode\Pokemon.Tamagotchi\bin\Debug\net9.0\AutoMapper.dll
+F:\GitHub\C#\7DaysOfCode\Pokemon.Tamagotchi\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+F:\GitHub\C#\7DaysOfCode\Pokemon.Tamagotchi\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+F:\GitHub\C#\7DaysOfCode\Pokemon.Tamagotchi\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll

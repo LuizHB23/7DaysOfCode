@@ -49,6 +49,10 @@ internal class ControllerMascote
 
     private void ExibirStatus(Mascote mascote)
     {
+        Console.WriteLine(mascote);
+        Console.WriteLine("Habilidades:");
+        mascote.VerHabilidades();
+
         if(mascote.EstadoMascote.Fome >= 5)
         {
             Console.WriteLine($"{mascote.Nome} está satisfeito");

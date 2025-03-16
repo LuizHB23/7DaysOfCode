@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "IeNxM1koGwY=",
+  "dgSpecHash": "5Zz6MYbcXgg=",
   "success": true,
   "projectFilePath": "F:\\GitHub\\C#\\7DaysOfCode\\Pokemon.Tamagotchi\\Pokemon.Tamagotchi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\luizh\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
+    "C:\\Users\\luizh\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\luizh\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\luizh\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\luizh\\.nuget\\packages\\restsharp\\112.1.0\\restsharp.112.1.0.nupkg.sha512"
   ],
   "logs": []

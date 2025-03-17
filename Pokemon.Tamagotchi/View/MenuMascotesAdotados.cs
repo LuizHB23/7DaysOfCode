@@ -21,7 +21,7 @@ internal class MenuMascotesAdotados : Menu
 
     }
 
-    public override int ExibirMenu()
+    public override async Task<int> ExibirMenuAsync()
     {
         EscreveTitulo(titulo);
         Console.WriteLine($"{nomePessoa} escolha seu mascote");
@@ -35,9 +35,22 @@ internal class MenuMascotesAdotados : Menu
             Console.WriteLine($"{voltar} - Voltar");
             do
             {
-                numero = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    numero = Convert.ToInt32(Console.ReadLine());
+
+                    if(numero < 1 || numero > voltar)
+                    {
+                        Console.WriteLine("Opção inválida. Tente novamente");
+                    }
+                }
+                catch(FormatException exception)
+                {
+                    Console.WriteLine($"Isso não é um número: {exception.Message}");
+                }
+                
             }
-            while(numero < 0 || numero > voltar);
+            while(numero < 1 || numero > voltar);
 
             if(player.ControllerMascote is null)
             {
@@ -47,7 +60,7 @@ internal class MenuMascotesAdotados : Menu
 
             if(numero != voltar)
             {
-                player.ControllerMascote.Interagir(numero);
+                await player.ControllerMascote.Interagir(numero);
             }
         }
 

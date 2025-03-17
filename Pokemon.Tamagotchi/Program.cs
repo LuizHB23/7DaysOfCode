@@ -2,5 +2,5 @@
 
 ControllerMenu controller = new ControllerMenu();
 
-controller.Jogar();
+await controller.Jogar();
 

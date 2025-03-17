@@ -1,6 +1,7 @@
 using Pokemon.Tamagotchi.RequestResponse;
 using Pokemon.Tamagotchi.Models;
 using Pokemon.Tamagotchi.View;
+using System.Threading.Tasks;
 
 namespace Pokemon.Tamagotchi.Controller;
 
@@ -8,7 +9,7 @@ internal class ControllerMenu
 {
     private readonly string endereco = "https://pokeapi.co/api/v2/pokemon";
 
-    public void Jogar()
+    public async Task Jogar()
     {
 
         Request request = new Request(endereco);
@@ -33,7 +34,7 @@ internal class ControllerMenu
 
         while(menu is not null)
         {
-            numero = menu.ExibirMenu();
+            numero = await menu.ExibirMenuAsync();
             menu = menu.RetornaMenu(numero);
         }
 

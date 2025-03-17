@@ -17,7 +17,7 @@ internal class MenuPrincipal : Menu
 
     public MenuPrincipal(Player player, Request request) : base(player, request) {}
 
-    public override int ExibirMenu()
+    public override async Task<int> ExibirMenuAsync()
     {
         EscreveTitulo(titulo);
         Console.WriteLine($"{nomePessoa} escolha o que quer fazer");
@@ -32,6 +32,11 @@ internal class MenuPrincipal : Menu
             try
             {
                 numero = Convert.ToInt32(Console.ReadLine());
+
+                if(numero < 1 || numero > 3)
+                {
+                    Console.WriteLine("Opção inválida. Tente novamente");
+                }
 
                 if(numero == 2 && !player.Mascotes.VerificaMascotes())
                 {

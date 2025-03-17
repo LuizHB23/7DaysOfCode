@@ -16,7 +16,7 @@ internal abstract class Menu
         this.request = request;
     }
 
-    public abstract int ExibirMenu();
+    public abstract Task<int> ExibirMenuAsync();
     public abstract Menu RetornaMenu(int numero);
     protected void EscreveTitulo(string titulo)
     {

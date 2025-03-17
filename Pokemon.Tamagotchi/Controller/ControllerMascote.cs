@@ -1,6 +1,7 @@
 using Pokemon.Tamagotchi.RequestResponse;
 using Pokemon.Tamagotchi.Models;
 using Pokemon.Tamagotchi.View;
+using System.Threading.Tasks;
 
 namespace Pokemon.Tamagotchi.Controller;
 
@@ -15,14 +16,14 @@ internal class ControllerMascote
         this.request = request;
     }
 
-    public void Interagir(int numero)
+    public async Task Interagir(int numero)
     {
         Mascote mascote = player.Mascotes.RetornaMascoteListaPorNumero(numero - 1);
         MenuMascote menu = new MenuMascote(player, request, mascote);
         int interacao;
         do
         {
-            interacao = menu.ExibirMenu();
+            interacao = await menu.ExibirMenuAsync();
             switch (interacao)
             {
                 case 1:

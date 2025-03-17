@@ -47,7 +47,17 @@ internal class Request
         using(HttpClient client = new HttpClient())
         {
             var response = await client.GetStringAsync(endereco);
-            var deserializer = JsonSerializer.Deserialize<Resposta>(response);
+            Resposta deserializer;
+
+            if(response is not null)
+            {
+                deserializer = JsonSerializer.Deserialize<Resposta>(response)!;
+            }
+            else
+            {
+                throw new EntryPointNotFoundException();
+            }
+                
 
             deserializer!.ExibeResultado();
         }
@@ -57,16 +67,24 @@ internal class Request
     {
         using(HttpClient client = new HttpClient())
         {
-            
             var response = await client.GetStringAsync(endereco);
-            var deserializer = JsonSerializer.Deserialize<Resposta>(response);
+            Resposta deserializer;
+
+           if(response is not null)
+            {
+                deserializer = JsonSerializer.Deserialize<Resposta>(response)!;
+            }
+            else
+            {
+                throw new EntryPointNotFoundException();
+            }
             
-            foreach(var pokemon in deserializer.Pokemons)
+            foreach(var pokemon in deserializer.Pokemons!)
             {
                 var responsePokemon = await client.GetStringAsync(endereco + $"/{pokemon.Name}");
                 var deserializerPokemon = JsonSerializer.Deserialize<MascoteRequest>(responsePokemon);
 
-                Console.WriteLine($"Id: {deserializerPokemon.Id} - Nome: {deserializerPokemon.Nome}");
+                Console.WriteLine($"Id: {deserializerPokemon!.Id} - Nome: {deserializerPokemon.Nome}");
             }
         }
     }
@@ -76,9 +94,18 @@ internal class Request
         using(HttpClient client = new HttpClient())
         {
             var response = await client.GetStringAsync(endereco + $"/{id}");
-            var deserializer = JsonSerializer.Deserialize<MascoteRequest>(response);
+            MascoteRequest deserializer;
 
-            return deserializer.Nome;
+           if(response is not null)
+            {
+                deserializer = JsonSerializer.Deserialize<MascoteRequest>(response)!;
+            }
+            else
+            {
+                throw new EntryPointNotFoundException();
+            }
+
+            return deserializer!.Nome!;
         }
     }
 
@@ -87,11 +114,20 @@ internal class Request
         using(HttpClient client = new HttpClient())
         {
             var response = await client.GetStringAsync(endereco + $"/{nome}");
-            var deserializer = JsonSerializer.Deserialize<MascoteRequest>(response);
+            MascoteRequest deserializer;
+
+           if(response is not null)
+            {
+                deserializer = JsonSerializer.Deserialize<MascoteRequest>(response)!;
+            }
+            else
+            {
+                throw new EntryPointNotFoundException();
+            }
 
             Console.WriteLine(deserializer);
             Console.WriteLine("Habilidades:\n");
-            deserializer.VerHabilidades();
+            deserializer!.VerHabilidades();
         }
     }
 
@@ -100,7 +136,17 @@ internal class Request
         using(HttpClient client = new HttpClient())
         {
             var response = await client.GetStringAsync(endereco + $"/{nome}");
-            var deserializer = JsonSerializer.Deserialize<MascoteRequest>(response);
+            MascoteRequest deserializer;
+
+           if(response is not null)
+            {
+                deserializer = JsonSerializer.Deserialize<MascoteRequest>(response)!;
+            }
+            else
+            {
+                throw new EntryPointNotFoundException();
+            }
+            
             var config = new MapperConfiguration(cfg => cfg.CreateMap<MascoteRequest, Mascote>());
             var mapping = config.CreateMapper();
             Mascote mascote = mapping.Map<Mascote>(deserializer);

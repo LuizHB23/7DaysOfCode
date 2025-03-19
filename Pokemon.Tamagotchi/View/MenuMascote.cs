@@ -1,5 +1,5 @@
 using Pokemon.Tamagotchi.Models;
-using Pokemon.Tamagotchi.RequestResponse;
+using Pokemon.Tamagotchi.Services;
 
 namespace Pokemon.Tamagotchi.View;
 

@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using Pokemon.Tamagotchi.Models;
+using Pokemon.Tamagotchi.Util;
 
-namespace Pokemon.Tamagotchi.RequestResponse;
+namespace Pokemon.Tamagotchi.Services;
 
 internal class RespostaOld
 {

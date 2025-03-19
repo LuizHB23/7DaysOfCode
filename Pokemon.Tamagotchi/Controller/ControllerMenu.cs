@@ -1,7 +1,6 @@
-using Pokemon.Tamagotchi.RequestResponse;
+using Pokemon.Tamagotchi.Services;
 using Pokemon.Tamagotchi.Models;
 using Pokemon.Tamagotchi.View;
-using System.Threading.Tasks;
 
 namespace Pokemon.Tamagotchi.Controller;
 

@@ -1,4 +1,4 @@
-using Pokemon.Tamagotchi.RequestResponse;
+using Pokemon.Tamagotchi.Services;
 using Pokemon.Tamagotchi.Models;
 
 namespace Pokemon.Tamagotchi.View;

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Pokemon.Tamagotchi.Models;
+namespace Pokemon.Tamagotchi.Util;
 
 internal class Habilidades
 {

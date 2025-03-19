@@ -1,3 +1,4 @@
+using Pokemon.Tamagotchi.Util;
 using Pokemon.Tamagotchi.Models;
 using System.Text.Json;
 using RestSharp;

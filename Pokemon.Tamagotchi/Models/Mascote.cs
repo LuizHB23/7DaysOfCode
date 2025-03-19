@@ -1,3 +1,5 @@
+using Pokemon.Tamagotchi.Util;
+
 namespace Pokemon.Tamagotchi.Models;
 
 internal class Mascote
